@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  kanka:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - kanka-network
+  
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    networks:
+      - kanka-network
+    command: serve
+
+volumes:
+  ollama:
+
+networks:
+  kanka-network:
+    driver: bridge
