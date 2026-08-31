@@ -1,0 +1,41 @@
+# KANKA AUTOMATION CONFIG
+app:
+  name: "KANKA AUTOMATION"
+  version: "1.0.0"
+  debug: false
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+
+agents:
+  max_agents: 5
+  timeout: 30
+  retry_attempts: 3
+
+voice:
+  enabled: true
+  model: "default"
+  language: "tr-TR"
+  timeout: 10
+
+automation:
+  enabled: true
+  max_concurrent_tasks: 5
+  task_timeout: 300
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  file: "kanka.log"
+
+database:
+  type: "sqlite"
+  path: "kanka.db"
+
+apk:
+  builder_path: "/apk_builder"
+  output_dir: "/build"
+  min_sdk: 21
+  target_sdk: 33
